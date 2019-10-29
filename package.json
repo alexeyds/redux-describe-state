@@ -31,6 +31,7 @@
     "enhanced-tape": "^0.1.1",
     "enhanced-tape-runner": "^1.1.2",
     "eslint": "^6.6.0",
+    "redux": "^4.0.4",
     "rollup": "^1.25.2",
     "rollup-plugin-babel": "^4.3.3",
     "tap-spec-dot": "^0.1.2",
