@@ -10,7 +10,8 @@
   "scripts": {
     "test": "./test.sh test",
     "lint": "eslint {src,test}/**/*{js,jsx}",
-    "test-publish": "npm test && npm run-script build && npm publish",
+    "test-dist": "",
+    "prepare": "npm test && npm run-script build && npm run-script test-dist",
     "build": "rollup -c"
   },
   "repository": {
