@@ -50,6 +50,14 @@ test("describeState", function(t) {
       t.end();
     });
   });
+
+  t.test("arguments validation", function(t) {
+    t.test("throws if getInitialState is not a function", function(t) {
+      t.throws(() => describeState({name: "todos", getInitialState: []}), /function/);
+  
+      t.end();
+    });
+  });
 });
 
 test("combineStates", function(t) {
@@ -67,6 +75,13 @@ test("combineStates", function(t) {
     let todos_2 = describeState({name: "todos", getInitialState: () => []});
 
     t.throws(() => combineStates([todos_1, todos_2]), /state/);
+  
+    t.end();
+  });
+
+  t.test("validates {name, reducer} to be present in state", function(t) {
+    t.throws(() => combineStates([{reducer: () => 1}]), /name/);
+    t.throws(() => combineStates([{name: "todos"}]), /reducer/);
   
     t.end();
   });
