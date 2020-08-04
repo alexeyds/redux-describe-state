@@ -49,7 +49,7 @@ console.log(getTodos()); // => []
 ## API
 ### describeState
 ```js
-describeState({name, getInitialState})
+let {reducer, buildAction} = describeState({name, getInitialState})
 ```
 
 - `name`: name for this state chunk. Used in generating action name. Required.
@@ -57,8 +57,7 @@ describeState({name, getInitialState})
 
 Returns and object with following keys:
 - `reducer`: a reducer function which can be passed to redux's `combineReducers` or used on its own.
-- `buildAction`: action builder function.
-
+- `buildAction`: action builder function:
 ```js
 let action = buildAction(currentState => nextState);
 dispatch(action);
