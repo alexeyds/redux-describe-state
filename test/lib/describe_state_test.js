@@ -26,12 +26,12 @@ test("describeState", function(t) {
     });
   });
 
-  t.test("state.newAction()", function(t) {
+  t.test("state.buildAction()", function(t) {
     t.test("changes store state", function(t) {
       let state = describeState({name: "todos", getInitialState: () => [1]});
       let store = createStore(combineReducers({todos: state.reducer}));
 
-      store.dispatch(state.newAction(todos => [...todos, 2]));
+      store.dispatch(state.buildAction(todos => [...todos, 2]));
       t.same(store.getState().todos, [1, 2]);
 
       t.end();
@@ -42,8 +42,8 @@ test("describeState", function(t) {
       let usersState = describeState({name: "users", getInitialState: () => []});
       let store = createStore(combineReducers({todos: todosState.reducer, users: usersState.reducer}));
 
-      store.dispatch(todosState.newAction(() => ["todo"]));
-      store.dispatch(usersState.newAction(() => ["user"]));
+      store.dispatch(todosState.buildAction(() => ["todo"]));
+      store.dispatch(usersState.buildAction(() => ["user"]));
 
       t.same(store.getState().users, ["user"]);
       t.same(store.getState().todos, ["todo"]);
