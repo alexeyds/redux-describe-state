@@ -51,12 +51,4 @@ test("describeState", function(t) {
       t.end();
     });
   });
-
-  t.test("arguments validation", function(t) {
-    t.test("throws if getInitialState is not a function", function(t) {
-      t.throws(() => describeState({name: "todos", getInitialState: []}), /function/);
-  
-      t.end();
-    });
-  });
 });
